@@ -1,0 +1,29 @@
+<script type="text/x-template" id="miypagelist-html">
+    <div aria-label="Page navigation" class="dataTables_paginate paging_simple_numbers" v-if="RealPageLength>0">
+            <ul class="pagination d-flex justify-content-center">
+                <li class="paginate_button page-item previous" v-once><a class="page-link" aria-label="上一頁" v-on:click="Prev()"
+                        href="javascript:void(0)"><span aria-hidden="true">上一頁</span></a>
+                </li>
+                <li class="paginate_button page-item" v-if="MinPage>11"><a class="page-link" href="javascript:void(0)"
+                        v-on:click="ChangePage(1)">1</a>
+                </li>
+                <li class="paginate_button page-item" v-if="MinPage>1"><a class="page-link" href="javascript:void(0)">..</a>
+                </li>
+                <li class="paginate_button page-item" v-for="(item,index) in MaxPage" :key="item" :class="{active:item==NowPage&&item >=MinPage}">
+                    <a class="page-link" href="javascript:void(0)" v-if="item==NowPage&&item >=MinPage">{{item}}</a>
+                    <a class="page-link" href="javascript:void(0)" v-if="item!=NowPage&&item >=MinPage" v-on:click="ChangePage(index+1)">{{item}}</a>
+                </li>
+                <li class="paginate_button page-item" v-if="MaxPage<RealPageLength"><a class="page-link" href="javascript:void(0)">..</a>
+                </li>
+                <li class="paginate_button page-item" v-if="MaxPage<RealPageLength-10"><a class="page-link" v-on:click="ChangePage(RealPageLength)"
+                        href="javascript:void(0)">{{RealPageLength}}</a>
+                </li>
+                <li class="paginate_button page-item next" v-once><a class="page-link" href="javascript:void(0)" v-on:click="Next()"
+                        aria-label="下一頁"><span aria-hidden="true">下一頁</span></a>
+                </li>
+            </ul>
+            <div v-if="PageSize"><br />單頁顯示<input type="number" min="1" style="width:35px" v-model.lazy="MaxItemsOnePage"
+                    v-on:change="ChangeMaxItemsOnePage()" />筆
+            </div>
+        </div>
+</script>
