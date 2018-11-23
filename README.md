@@ -7,8 +7,6 @@ simple pagination plugin for vue
 
 Just dowlond and include js files on html like other js plugin.
 
-Or try the sample on <a href="https://jsfiddle.net/miy123/n0qo3v8x/13/">Jsfiddle</a>.
-
 ### Prerequisites
 
 You should include bootstrap and Vue first.
